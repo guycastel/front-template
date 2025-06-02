@@ -50,6 +50,13 @@ src/
 - TypeScript configuration in `tsconfig.json`
 - Vite configuration in `vite.config.ts`
 
+### Code Style Rules
+- **No semicolons** at end of lines
+- **100 characters** soft limit (Prettier will wrap at this length)
+- **120 characters** hard limit (ESLint will error beyond this)
+- **Single quotes** for strings
+- **2 spaces** for indentation
+
 ## 📝 License
 
 This template is free to use for any project.
