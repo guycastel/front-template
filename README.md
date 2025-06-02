@@ -6,6 +6,8 @@ A clean, minimal template for starting new React projects with modern tooling.
 
 - **React 18** with TypeScript
 - **Vite** for fast development and building
+- **CSS Modules** for scoped styling
+- **clsx** for conditional class names
 - **ESLint** for code quality
 - **Prettier** for code formatting
 - **npm** as package manager
@@ -36,12 +38,77 @@ A clean, minimal template for starting new React projects with modern tooling.
 
 ```
 src/
-├── App.tsx          # Main App component
-├── App.css          # App styles
-├── main.tsx         # App entry point
-├── index.css        # Global styles
-└── assets/          # Static assets
+├── App.tsx              # Main App component
+├── App.module.css       # App styles (CSS Modules)
+├── main.tsx             # App entry point
+├── index.css            # Global styles
+├── types/
+│   └── css.d.ts         # CSS Modules TypeScript definitions
+└── assets/              # Static assets
 ```
+
+## 🎨 CSS Modules Usage
+
+This template uses CSS Modules for component-scoped styling:
+
+```tsx
+// Component.tsx
+import styles from './Component.module.css'
+
+function Component() {
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Hello World</h1>
+    </div>
+  )
+}
+```
+
+```css
+/* Component.module.css */
+.container {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+}
+```
+
+### Benefits
+
+- **Scoped styles** - No global CSS conflicts
+- **TypeScript support** - Autocomplete for class names
+- **Automatic optimization** - Vite handles minification and hashing
+
+## 🎯 Conditional Styling with clsx
+
+For dynamic class names, this template includes `clsx` for clean conditional styling:
+
+```tsx
+import clsx from 'clsx'
+import styles from './Component.module.css'
+
+function Component({ isActive, isDisabled }) {
+  return (
+    <div
+      className={clsx(styles.button, {
+        [styles.active]: isActive,
+        [styles.disabled]: isDisabled,
+      })}
+    >
+      Dynamic Button
+    </div>
+  )
+}
+```
+
+### clsx Benefits
+- **Clean syntax** - No more template literals for complex conditions
+- **Conditional classes** - Easy true/false class toggling
+- **Multiple formats** - Supports strings, objects, arrays
+- **TypeScript friendly** - Full type safety with CSS Modules
 
 ## 🔧 Configuration
 
@@ -51,6 +118,7 @@ src/
 - Vite configuration in `vite.config.ts`
 
 ### Code Style Rules
+
 - **No semicolons** at end of lines
 - **100 characters** soft limit (Prettier will wrap at this length)
 - **120 characters** hard limit (ESLint will error beyond this)
