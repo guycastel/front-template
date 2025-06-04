@@ -42,6 +42,11 @@ src/
 ├── App.module.css       # App styles (CSS Modules)
 ├── main.tsx             # App entry point
 ├── index.css            # Global styles
+├── components/
+│   └── Button/          # Example Button component
+│       ├── Button.tsx
+│       ├── Button.module.css
+│       └── index.ts
 ├── types/
 │   └── css.d.ts         # CSS Modules TypeScript definitions
 └── assets/              # Static assets
@@ -117,6 +122,14 @@ function Component({ isActive, isDisabled }) {
 - TypeScript configuration in `tsconfig.json`
 - Vite configuration in `vite.config.ts`
 
+### ESLint Plugins Included
+
+- **react-hooks** - React Hooks rules
+- **react-refresh** - React Refresh rules for development
+- **react-dom** - React DOM specific linting rules
+- **react-x** - Advanced React linting with TypeScript support
+- **prettier** - Code formatting integration
+
 ### Code Style Rules
 
 - **No semicolons** at end of lines
@@ -128,27 +141,3 @@ function Component({ isActive, isDisabled }) {
 ## 📝 License
 
 This template is free to use for any project.
-
-````
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-````
