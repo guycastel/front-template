@@ -14,7 +14,7 @@ function Button({ children, variant = 'primary', onClick, disabled = false }: Bu
   })
 
   return (
-    <button className={buttonClass} onClick={onClick} disabled={disabled}>
+    <button type="button" className={buttonClass} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   )
