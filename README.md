@@ -9,6 +9,7 @@ A clean, minimal template for starting new React projects with modern tooling.
 - **CSS Modules** for scoped styling
 - **clsx** for conditional class names
 - **ESLint** for code quality
+- **Stylelint** for CSS linting
 - **Prettier** for code formatting
 - **npm** as package manager
 
@@ -31,6 +32,8 @@ A clean, minimal template for starting new React projects with modern tooling.
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Run ESLint with auto-fix
+- `npm run lint:css` - Run Stylelint on CSS files
+- `npm run lint:css:fix` - Run Stylelint with auto-fix
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 
@@ -110,6 +113,7 @@ function Component({ isActive, isDisabled }) {
 ```
 
 ### clsx Benefits
+
 - **Clean syntax** - No more template literals for complex conditions
 - **Conditional classes** - Easy true/false class toggling
 - **Multiple formats** - Supports strings, objects, arrays
@@ -118,25 +122,40 @@ function Component({ isActive, isDisabled }) {
 ## 🔧 Configuration
 
 - ESLint configuration in `eslint.config.js`
+- Stylelint configuration in `.stylelintrc.json`
 - Prettier configuration in `.prettierrc`
 - TypeScript configuration in `tsconfig.json`
 - Vite configuration in `vite.config.ts`
 
 ### ESLint Plugins Included
 
-- **react-hooks** - React Hooks rules
+- **react** - React-specific linting rules
+- **react-hooks** - React Hooks rules and best practices
 - **react-refresh** - React Refresh rules for development
-- **react-dom** - React DOM specific linting rules
-- **react-x** - Advanced React linting with TypeScript support
-- **prettier** - Code formatting integration
+- **typescript-eslint** - TypeScript-specific linting rules
+
+### Modern ESLint + Prettier Setup
+
+This template follows modern best practices by separating concerns:
+
+- **ESLint** handles code quality and logic issues
+- **Prettier** handles code formatting exclusively
+- **eslint-config-prettier** disables conflicting ESLint formatting rules
+- **No eslint-plugin-prettier** - tools run independently for better performance
+
+### Stylelint Configuration
+
+- **stylelint-config-standard** - Standard CSS rules and best practices
+- **Custom rules** - Disabled `selector-class-pattern` for CSS Modules compatibility
+- **Auto-fixable** - Many CSS issues can be automatically fixed
 
 ### Code Style Rules
 
-- **No semicolons** at end of lines
-- **100 characters** soft limit (Prettier will wrap at this length)
-- **120 characters** hard limit (ESLint will error beyond this)
-- **Single quotes** for strings
-- **2 spaces** for indentation
+- **No semicolons** at end of lines (ESLint + Prettier)
+- **100 characters** line length (Prettier)
+- **Single quotes** for strings (Prettier)
+- **2 spaces** for indentation (Prettier)
+- **ES5 trailing commas** (Prettier)
 
 ## 📝 License
 
